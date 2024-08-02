@@ -1,0 +1,28 @@
+name: basic_landing_webpage
+description: Basic landing webpage
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.3 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  url_launcher: ^6.2.1
+  url_strategy: ^0.2.0
+  hooks_riverpod: ^2.4.8
+  webview_flutter_web: ^0.2.2+3
+  webview_flutter: ^4.4.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/images/screenshots/
