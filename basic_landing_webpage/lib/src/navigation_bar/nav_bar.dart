@@ -10,12 +10,12 @@ class NavBar extends ResponsiveWidget {
 
   @override
   Widget buildDesktop(BuildContext context) {
-    return const DesktopNavBar();
+	return const DesktopNavBar();
   }
 
   @override
   Widget buildMobile(BuildContext context) {
-    return const MobileNavBar();
+	return const MobileNavBar();
   }
 }
 
@@ -23,54 +23,46 @@ class DesktopNavBar extends HookConsumerWidget {
   const DesktopNavBar({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final isScrolled = ref.watch(scrolledProvider);
-    final navBarColor = isScrolled ? Colors.blue : Colors.white;
+Widget build(BuildContext context, WidgetRef ref) {
+  final isScrolled = ref.watch(scrolledProvider);
+  final navBarColor = isScrolled ? Colors.blue : Colors.white;
 
-    return Container(
-      color: navBarColor,
-      child: Padding(
-        padding: EdgeInsets.all(20),
-        child: Row(
-          children: <Widget>[
-            Image.asset(
-              "assets/images/logo.png",
-              height: 40.0,
-            ),
-            SizedBox(width: 10.0),
-            Text(
-              "Company Name",
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                color: Colors.black87,
-                fontSize: 32,
-              ),
-            ),
-            Expanded(child: Container()),
-            NavBarButton(
-              onTap: () => ref.read(currentPageProvider.notifier).state = homeKey,
-              text: "Home",
-            ),
-            NavBarButton(
-              onTap: () =>
-                  ref.read(currentPageProvider.notifier).state = featureKey,
-              text: "Features",
-            ),
-            NavBarButton(
-              onTap: () =>
-                  ref.read(currentPageProvider.notifier).state = screenshotKey,
-              text: "Screenshots",
-            ),
-            NavBarButton(
-              onTap: () =>
-                  ref.read(currentPageProvider.notifier).state = contactKey,
-              text: "Contact",
-            ),
-          ],
-        ),
+  return Container(
+    color: navBarColor,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+      child: Row(
+        children: [
+          // Logo a la izquierda
+          Image.asset(
+            'assets/images/logo.png', // Ruta de la imagen del logo
+            height: 40, // Altura del logo
+          ),
+          Spacer(), // Espacio flexible entre el logo y los botones
+          // Botones alineados a la derecha
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              NavBarButton(text: 'Inicio', onTap: () {}),
+              SizedBox(width: 10),
+              NavBarButton(text: 'Sobre nosotros', onTap: () {}),
+              SizedBox(width: 10),
+              NavBarButton(text: 'Servicios', onTap: () {}),
+              SizedBox(width: 10),
+              NavBarButton(text: 'Contacto', onTap: () {}),
+              SizedBox(width: 10),
+              NavBarButton(text: 'Inicio de sesión', onTap: () {}),
+              SizedBox(width: 10),
+              NavBarButton(text: 'Registrarse', onTap: () {}),
+            ],
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
+
 }
 
 class MobileNavBar extends HookConsumerWidget {
@@ -78,91 +70,9 @@ class MobileNavBar extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final containerHeight = useState<double>(0.0);
-    final isScrolled = ref.watch(scrolledProvider);
-
-    final navBarColor = isScrolled ? Colors.blue : Colors.white;
-    return Stack(
-      children: [
-        AnimatedContainer(
-          margin: EdgeInsets.only(top: 70.0),
-          duration: Duration(milliseconds: 350),
-          curve: Curves.ease,
-          height: containerHeight.value,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                NavBarButton(
-                  text: "Home",
-                  onTap: () {
-                    ref.read(currentPageProvider.notifier).state = homeKey;
-                    containerHeight.value = 0;
-                  },
-                ),
-                NavBarButton(
-                  text: "Features",
-                  onTap: () {
-                    ref.read(currentPageProvider.notifier).state = featureKey;
-                    containerHeight.value = 0;
-                  },
-                ),
-                NavBarButton(
-                  text: "Screenshots",
-                  onTap: () {
-                    ref.read(currentPageProvider.notifier).state = screenshotKey;
-                    containerHeight.value = 0;
-                  },
-                ),
-                NavBarButton(
-                  text: "Contact",
-                  onTap: () {
-                    ref.read(currentPageProvider.notifier).state = contactKey;
-                    containerHeight.value = 0;
-                  },
-                ),
-              ],
-            ),
-          ),
-        ),
-        Container(
-          color: navBarColor,
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Row(
-              children: <Widget>[
-                Image.asset(
-                  "assets/images/logo.png",
-                  height: 30.0,
-                ),
-                SizedBox(width: 10.0),
-                Text(
-                  "Company Name",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      color: Colors.black87,
-                      fontSize: 32),
-                ),
-                Expanded(
-                  child: Container(),
-                ),
-                Material(
-                  child: InkWell(
-                    splashColor: Colors.white60,
-                    onTap: () {
-                      final height = containerHeight.value > 0 ? 0.0 : 240.0;
-                      containerHeight.value = height;
-                    },
-                    child: Icon(
-                      Icons.menu,
-                      color: Colors.black54,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
+	// Implementación para la barra de navegación móvil
+	return Container(
+	  // Aquí puedes añadir la implementación para la versión móvil
+	);
   }
 }

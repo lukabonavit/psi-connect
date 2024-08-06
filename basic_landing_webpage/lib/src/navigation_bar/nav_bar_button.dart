@@ -28,9 +28,9 @@ class NavBarButton extends HookConsumerWidget {
         child: InkWell(
           onTap: onTap,
           child: Container(
-            height: 50,
+            height: 30,
             alignment: Alignment.center,
-            margin: EdgeInsets.symmetric(horizontal: 16),
+            margin: EdgeInsets.symmetric(horizontal: 8),
             child: Text(
               text,
               style: TextStyle(

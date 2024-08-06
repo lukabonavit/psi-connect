@@ -8,7 +8,7 @@ void main() {
   runApp(
     ProviderScope(
       child: MaterialApp(
-        title: "Basic landing webpage",
+        title: "Psiconnect",
         home: MyWebPage(),
       ),
     ),
