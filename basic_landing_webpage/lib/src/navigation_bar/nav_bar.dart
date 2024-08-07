@@ -1,4 +1,4 @@
-import 'package:basic_landing_webpage/src/my_web_page.dart';
+import 'package:basic_landing_webpage/src/screens/my_web_page.dart';
 import 'package:basic_landing_webpage/src/navigation_bar/nav_bar_button.dart';
 import 'package:basic_landing_webpage/src/widgets/responsive_widget.dart';
 import 'package:flutter/material.dart';
@@ -52,9 +52,15 @@ Widget build(BuildContext context, WidgetRef ref) {
               SizedBox(width: 10),
               NavBarButton(text: 'Contacto', onTap: () {}),
               SizedBox(width: 10),
-              NavBarButton(text: 'Inicio de sesión', onTap: () {}),
+              NavBarButton(text: 'Inicio de sesión', onTap: () {
+                Navigator.pushNamed(context,'/login');
+              }
+            ),
               SizedBox(width: 10),
-              NavBarButton(text: 'Registrarse', onTap: () {}),
+              NavBarButton(text: 'Registrarse', onTap: () {
+
+                Navigator.pushNamed(context,'/register');
+              }),
             ],
           ),
         ],
