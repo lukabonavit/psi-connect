@@ -1,11 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:basic_landing_webpage/src/navigation_bar/nav_bar.dart';
 import 'package:basic_landing_webpage/src/content/contact_content.dart';
 import 'package:basic_landing_webpage/src/content/feature_content.dart';
 import 'package:basic_landing_webpage/src/content/home_content.dart';
 import 'package:basic_landing_webpage/src/content/screenshots_content.dart';
-import 'package:basic_landing_webpage/src/navigation_bar/nav_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 final homeKey = new GlobalKey();
 final featureKey = new GlobalKey();
@@ -16,6 +17,10 @@ final currentPageProvider = StateProvider<GlobalKey>((_) => homeKey);
 final scrolledProvider = StateProvider<bool>((_) => false);
 
 class MyWebPage extends HookConsumerWidget {
+  final ItemScrollController itemScrollController;
+
+  MyWebPage({required this.itemScrollController});
+
   void onScroll(ScrollController controller, WidgetRef ref) {
     final isScrolled = ref.read(scrolledProvider);
 
@@ -26,8 +31,10 @@ class MyWebPage extends HookConsumerWidget {
     }
   }
 
-  void scrollTo(GlobalKey key) => Scrollable.ensureVisible(key.currentContext!,
-      duration: Duration(milliseconds: 500));
+  void scrollTo(GlobalKey key) {
+    Scrollable.ensureVisible(key.currentContext!,
+        duration: Duration(milliseconds: 500));
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -53,7 +60,7 @@ class MyWebPage extends HookConsumerWidget {
           width: maxWith,
           child: Column(
             children: [
-              NavBar(),
+              NavBar(itemScrollController: itemScrollController),
               Expanded(
                 child: SingleChildScrollView(
                   controller: _controller,

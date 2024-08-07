@@ -15,6 +15,7 @@ dependencies:
   hooks_riverpod: ^2.4.8
   webview_flutter_web: ^0.2.2+3
   webview_flutter: ^4.4.2
+  scrollable_positioned_list: ^0.3.8
 
 dev_dependencies:
   flutter_test:
