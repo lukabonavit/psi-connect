@@ -39,7 +39,7 @@ class DesktopHomeContent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Basic Landing Webpage",
+                  "Psiconnect",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
                 ),
                 SizedBox(height: 24),
